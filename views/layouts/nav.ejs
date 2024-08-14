@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand bg-primary"  data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Inventori</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link <%= currentRoute === '/' ? 'active' : '' %>" aria-current="page" href="/">Dashboard</a>
+          </li>
+         
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle <%= (currentRoute.startsWith('/satuan') || currentRoute.startsWith('/brand')) ? 'active' : '' %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Master
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item  <%= currentRoute.startsWith('/satuan') ? 'active' : '' %> " href="/satuan">Satuan</a></li>
+              <li><a class="dropdown-item <%= currentRoute === '/satuan' ? 'brand' : '' %> " href="/brand">Brand</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <form action="/logout" method="POST">
+                      <input type="hidden" name="_csrf" value="<%= csrf %>">
+                      <button type="submit" class="dropdown-item" href="/logout">Logout</button>
+                    </form> 
+                  </li>
+              </ul>
+          </li>
+      </ul>
+      </div>
+    </div>
+</nav>
